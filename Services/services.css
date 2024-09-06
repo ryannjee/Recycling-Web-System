@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(177, 177, 182);
+}
+
+.content{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.content .content1{
+    position: relative;
+    width: 320px;
+    background: #605a6a;
+    padding: 100px 40px 60px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+}
+
+.content .content1:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #7056a0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+
+    }
+.content .content1:hover:before{
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+
+.content .content1 h2{
+    position: absolute;
+    left: 40px;
+    top: 60px;
+    font-size: 4em;
+    font-weight: 800;
+    z-index: 1;
+    opacity: 0.1;
+    transition: 0.5s;
+    color: #fff;
+}
+
+.content .content1:hover h2{
+    color: #fff;
+    opacity: 1;
+    transform: translateY(-40px);
+}
+
+.content .content1 h3{
+    position: relative;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 800;
+    z-index: 2;
+    transition: 0.5s;
+}
+
+.content .content1 p{
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 2;
+    opacity: 0.1;
+    transition: 0.5s;
+    padding-top: 15px;
+}
+
+.content .content1:hover h3{
+    color: black;
+}
+
+.content .content1:hover p{
+    color: #fff;
+    opacity: 1;
+}
+
+
+/*Navigation part*/
+
+p {
+margin: 0;
+}
+
+#burger-toggle {
+position: absolute;
+appearance: none;
+opacity: 0;
+}
+
+#burger-toggle:checked ~ .menu {
+opacity: 1;
+visibility: visible;
+}
+
+#burger-toggle:checked ~ .content {
+    display: none;
+}
+
+#burger-toggle:checked ~ .menu .menu-nav-link span div, 
+#burger-toggle:checked ~ .menu img, 
+#burger-toggle:checked ~ .menu .title p {
+transform: translateY(0);
+transition: 1.2s 0.1s cubic-bezier(0.35, 0, 0.07, 1);
+}
+
+#burger-toggle:checked ~ .menu .image-link:nth-child(1) img {
+transition-delay: 0.18s;
+}
+
+#burger-toggle:checked ~ .menu .image-link:nth-child(2) img {
+transition-delay: 0.26s;
+}
+
+#burger-toggle:checked ~ .menu .image-link:nth-child(3) img {
+transition-delay: 0.34s;
+}
+
+#burger-toggle:checked ~ .menu .image-link:nth-child(4) img {
+transition-delay: 0.42s;
+}
+
+#burger-toggle:checked ~ .burger-menu .line::after {
+transform: translateX(0);
+}
+
+#burger-toggle:checked ~ .burger-menu .line:nth-child(1) {
+transform: translateY(calc(var(--burger-menu-radius) / 5)) rotate(45deg);
+}
+
+#burger-toggle:checked ~ .burger-menu .line:nth-child(2) {
+transform: scaleX(0);
+}
+
+#burger-toggle:checked ~ .burger-menu .line:nth-child(3) {
+transform: translateY(calc(var(--burger-menu-radius) / -5)) rotate(-45deg);
+}
+
+.burger-menu {
+--burger-menu-radius: 4em;
+position: fixed;
+top: 5vh;
+left: 5vw;
+z-index: 100;
+display: block;
+width: var(--burger-menu-radius);
+height: var(--burger-menu-radius);
+outline: none;
+cursor: pointer;
+}
+
+.burger-menu .line {
+position: absolute;
+left: 25%;
+width: 50%;
+height: 3px;
+background: rgba(2, 2, 2, 0.3);
+border-radius: 10px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+.burger-menu .line:nth-child(1) {
+top: 30%;
+}
+
+.burger-menu .line:nth-child(2) {
+top: 50%;
+}
+
+.burger-menu .line:nth-child(3) {
+top: 70%;
+}
+
+.burger-menu .line::after {
+position: absolute;
+content: "";
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: var(--primary-color-darker);
+transform: translateX(-100%);
+transition: 0.25s;
+}
+
+.burger-menu .line:nth-child(2)::after {
+transition-delay: 0.1s;
+}
+
+.burger-menu .line:nth-child(3)::after {
+transition-delay: 0.2s;
+}
+
+.burger-menu:hover .line::after {
+transform: translateX(0);
+}
+
+.menu {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+visibility: hidden;
+background-color: rgb(177, 177, 182);
+z-index: 99;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+@media screen and (max-width: 750px) {
+.menu {
+    display: block;
+}
+}
+
+.menu-nav {
+display: flex;
+flex-wrap: wrap;
+margin: 0;
+padding: 0;
+text-align: center;
+list-style-type: none;
+}
+
+@media screen and (max-width: 750px) {
+.menu-nav {
+    flex-direction: column;
+}
+}
+
+.menu-nav-item {
+flex: 1;
+}
+
+.menu-nav-link {
+position: relative;
+display: inline-flex;
+font-size: 2rem;
+color: white;
+text-decoration: none;
+}
+
+.menu-nav-link span {
+overflow: hidden;
+}
+
+.menu-nav-link span div {
+transform: translateY(102%);
+}
+
+.menu-nav-link::after {
+position: absolute;
+content: "";
+top: 100%;
+left: 0;
+width: 100%;
+height: 3px;
+background: var(--primary-color);
+transform: scaleX(0);
+transform-origin: right;
+transition: transform 0.5s;
+}
+
+.menu-nav-link:hover::after {
+transform: scaleX(1);
+transform-origin: left;
+}
+
+.menu .gallery {
+margin-top: 60px;
+text-align: center;
+}
+
+.menu .title {
+font-size: 24px;
+color: white;
+overflow: hidden;
+}
+
+.menu .title p {
+font-size: 12px;
+letter-spacing: 2px;
+text-transform: uppercase;
+transform: translateY(102%);
+}
+
+.menu .images {
+margin-top: 36px;
+display: flex;
+flex-wrap: wrap;
+}
+
+@media screen and (max-width: 750px) {
+.menu .images {
+    justify-content: center;
+}
+}
+
+.menu .images .image-link {
+width: 15vw;
+margin: 0 12px;
+overflow: hidden;
+}
+
+@media screen and (max-width: 750px) {
+.menu .images .image-link {
+    width: 40vw;
+    margin: 0 12px 12px 0;
+}
+}
+
+.menu .images .image-link .image {
+position: relative;
+transition: 0.6s;
+}
+
+.menu .images .image-link .image::before {
+position: absolute;
+content: attr(data-label);
+top: 0;
+left: 0;
+z-index: 999;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+color: white;
+background: rgba(0, 0, 0, 0.6);
+opacity: 0;
+transition: 0.4s;
+}
+
+.menu .images .image-link:hover .image {
+transform: scale(1.2);
+}
+
+.menu .images .image-link:hover .image::before {
+opacity: 1;
+}
+
+.menu .images img {
+height: 250px;
+transform: translateY(102%);
+}
